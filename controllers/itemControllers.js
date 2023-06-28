@@ -50,7 +50,7 @@ const deleteItems = asyncHandler(async (req, res) => {
     const customListName = req.body.listName;
 
     if (customListName === "Today") {
-        await Item.findOneAndRemove({ name: checkedItemId }, function (err) {
+        await Item.findOneAndRemove({ _id: checkedItemId }, async (err)=> {
             if (!err)
                 res.redirect("/");
         })
